@@ -1,0 +1,3 @@
+rootProject.name = 'LibraryApplication'
+
+include 'st_danil_book'

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Danil Library demo project ">
+  <meta name="Danil" content="JavaLibrary">
+  <title>Book Library</title>
+  <style>
+       h3 {
+         color: green;
+       }
+       table {
+       color: red;
+       }
+  </style>
+</head>
+<body>
+<h3>Show all reader books</h3>
+<table>
+  <tr>
+    <td>ReaderBook id:</td>
+    <td>ReaderBook book id:</td>
+    <td>ReaderBook book title:</td>
+    <td>ReaderBook book author:</td>
+    <td>ReaderBook reader id:</td>
+    <td>ReaderBook reader first_name:</td>
+    <td>ReaderBook reader last_name:</td>
+    <td>ReaderBook reader book_out_date:</td>
+    <td>ReaderBook reader book_return_date:</td>
+  </tr>
+
+  <td th:if="${readerBooks != null}">
+    <tr th:each="readerBook : ${readerBooks}">
+      <td th:text="${readerBook.id}"></td>
+      <td th:text="${readerBook.book.id}"></td>
+      <td th:text="${readerBook.book.title}"></td>
+      <td th:text="${readerBook.book.author}"></td>
+      <td th:text="${readerBook.reader.id}"></td>
+      <td th:text="${readerBook.reader.first_name}"></td>
+      <td th:text="${readerBook.reader.last_name}"></td>
+      <td th:text="${readerBook.book_out_date}"></td>
+      <td th:text="${readerBook.book_return_date}"></td>
+    </tr>
+  </td>
+
+</table>
+
+<form action="/" method="get">
+  <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+</body>
+</html>

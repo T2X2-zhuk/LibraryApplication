@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author="Books" id="6">
+        <dropColumn
+                tableName="reader_books"
+                columnName="book_out_date"/>
+        <dropColumn
+                tableName="reader_books"
+                columnName="book_return_date"/>
+    </changeSet>
+
+    <changeSet author="Books" id="7">
+        <addColumn tableName="reader_books">
+            <column name="book_out_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_return_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+</databaseChangeLog>

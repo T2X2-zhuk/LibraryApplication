@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Danil Library demo project ">
+  <meta name="Danil" content="JavaLibrary">
+  <title>Book Library</title>
+  <style>
+       h3 {
+         color: green;
+       }
+       table {
+       color: blue;
+       }
+     </style>
+</head>
+<body>
+<h3>Add Reader book to list</h3>
+
+<table>
+  <tr>
+    <td>First Name Reader:</td>
+    <td>Last Name Reader:</td>
+    <td>title:</td>
+    <td>author:</td>
+    <td>book_out_date:</td>
+    <td>book_return_date:</td>
+  </tr>
+
+  <tr>
+    <form action="/addReaderBook" th:object="${request}" method="post">
+      <td><input type="text" th:field="${request.firstNameReader}"/></td>
+      <td><input type="text" th:field="${request.lastNameReader}"/></td>
+      <td><input type="text" th:field="${request.title}"/></td>
+      <td><input type="text" th:field="${request.author}"/></td>
+      <td><input type="date" th:field="${request.book_out_date}"/></td>
+      <td><input type="date" th:field="${request.book_return_date}"/></td>
+      <td>
+        <input type="submit" value="Add ReaderBook"/>
+        <input type="reset" value="Clear"/>
+      </td>
+    </form>
+  </tr>
+</table>
+
+<td th:if="${errors != null}">
+  <tr th:each="error : ${errors}">
+    <td th:text="${error.errorCode}"></td>
+    <td th:text="${error.description}"></td>
+  </tr>
+</td>
+
+<form action="/" method="get">
+  <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+</body>
+</html>

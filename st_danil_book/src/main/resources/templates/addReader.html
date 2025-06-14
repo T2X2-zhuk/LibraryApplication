@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Danil Library demo project ">
+  <meta name="Danil" content="JavaLibrary">
+  <title>Book Library</title>
+  <style>
+       h3 {
+         color: green;
+       }
+       table {
+       color: blue;
+       }
+     </style>
+</head>
+<body>
+
+           <h3>Add Reader</h3>
+
+           <table>
+             <tr>
+               <td>Reader name:</td>
+               <td>Reader lastName:</td>
+             </tr>
+
+             <tr>
+               <form action="/addReader" th:object="${request}" method="post">
+                 <td><input type="text" th:field="${request.firstName}"/></td>
+                 <td><input type="text" th:field="${request.lastName}"/></td>
+                 <td>
+                   <input type="submit" value="Add Reader"/>
+                   <input type="reset" value="Clear"/>
+                 </td>
+               </form>
+             </tr>
+           </table>
+
+           <td th:if="${errors != null}">
+             <tr th:each="error : ${errors}">
+               <td th:text="${error.errorCode}"></td>
+               <td th:text="${error.description}"></td>
+             </tr>
+           </td>
+
+</body>
+</html>

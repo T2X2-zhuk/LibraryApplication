@@ -1,0 +1,115 @@
+<configuration>
+
+    <property name="LOGS" value="./logs" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/application-logger.log</file>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/application-logger-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="REQUEST_RESPONSE_FILE_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/request-response-logger.log</file>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/request-response-logger-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_APPENDER" />
+    </root>
+
+    <logger name="library.rest.book.AddBookRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.book.AddBookResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+
+
+    <logger name="library.rest.book.RemoveBookRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.book.RemoveBookResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+
+    <logger name="library.rest.book.SearchBooksRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.book.SearchBooksResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+
+    <logger name="library.rest.readerBook.FindAllBooksWhichReadingReaderRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.readerBook.FindAllBooksWhichReadingReaderResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <logger name="library.rest.readerBook.AddReaderBookRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.readerBook.AddReaderBookResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <logger name="library.rest.readerBook.DeleteReaderBookRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.readerBook.DeleteReaderBookResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <logger name="library.rest.reader.AddReaderRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.reader.AddReaderResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+
+    <logger name="library.rest.reader.RemoveReaderRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.reader.RemoveReaderResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <logger name="library.rest.reader.SearchReaderResponseLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
+    </logger>
+    <logger name="library.rest.reader.SearchReadersRequestLogger" level="INFO">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+</configuration>

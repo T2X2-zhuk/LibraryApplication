@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Danil Library demo project ">
+  <meta name="Danil" content="JavaLibrary">
+  <title>Book Library</title>
+  <style>
+        h3 {
+    color: green;
+    }
+    table {
+    color: violet;
+    }
+    </style>
+</head>
+<body>
+
+<h3>Find all books which reading reader (readers):</h3>
+
+<table>
+  <tr>
+    <td>readerFirstName:</td>
+    <td>readerLastName:</td>
+  </tr>
+
+  <tr>
+    <form action="/findAllBooksWhichReadingReader" th:object="${request}" method="post">
+      <td><input type="text" th:field="${request.readerFirstName}"/></td>
+      <td><input type="text" th:field="${request.readerLastName}"/></td>
+      <td>
+        <input type="submit" value="Search books"/>
+        <input type="reset" value="Clear"/>
+      </td>
+    </form>
+  </tr>
+</table>
+
+<h3>Search results:</h3>
+
+<table>
+  <tr>
+    <td>Book title:</td>
+    <td>Book author:</td>
+  </tr>
+
+  <td th:if="${books != null}">
+    <tr th:each="book : ${books}">
+      <td th:text="${book.title}" />
+      <td th:text="${book.author}" />
+    </tr>
+  </td>
+
+  <td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+      <td th:text="${error.errorCode}"></td>
+      <td th:text="${error.description}"></td>
+    </tr>
+  </td>
+
+
+</table>
+
+<form action="/" method="get">
+  <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Danil Library demo project">
+  <meta name="Danil" content="JavaLibrary">
+  <title>Book Library</title>
+</head>
+<body>
+      <h3>Delete book from Data base </h3>
+
+       <table>
+
+         <tr>
+           <td>Book Id:</td>
+         </tr>
+
+         <tr>
+           <form action="/deleteBookFromList" th:object="${request}" method="post">
+             <td><input type="text" th:field="${request.bookId}"/></td>
+             <td>
+               <input type="submit" value="Delete Book"/>
+               <input type="reset" value="Clear"/>
+             </td>
+
+          </form>
+
+         </tr>
+       </table>
+
+      <td th:if="${errors != null}">
+          <tr th:each="error : ${errors}">
+              <td th:text="${error.errorCode}"></td>
+              <td th:text="${error.description}"></td>
+          </tr>
+      </td>
+
+      <form action="/" method="get">
+        <input type="submit" value="Go to main page" name="Submit" />
+      </form>
+
+</body>
+</html>
